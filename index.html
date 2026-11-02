@@ -2897,4 +2897,61 @@ window.addEventListener('focus',()=>void sync());
 // Explicit recovery for a photo saved before this version on the Android device.
 function button(){const anchor=document.getElementById('lbl28Status');if(!anchor||document.getElementById('lbl5721UploadPhotos'))return;const b=document.createElement('button');b.type='button';b.id='lbl5721UploadPhotos';b.textContent='☁️ Partager mes photos locales';b.style.margin='8px 0';b.onclick=async()=>{const c=await context();if(!c){status('Accès coach requis',true);return}const team=local(),items=(team?.players||[]).filter(p=>p.photo&&p.photo.length<350000);if(!items.length){status('Aucune photo locale à envoyer sur cet appareil.');return}if(!confirm('Partager '+items.length+' photo(s) locales dans les fiches joueurs Supabase ? Les photos déjà enregistrées sur cet appareil seront utilisées.'))return;b.disabled=true;for(const p of items)await uploadPhoto(p.id,p.photo);b.disabled=false};anchor.after(b)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',button);else button();
-})();</script></body></html>
+})();</script>
+<!-- LBL V56 DEV — Configuration sécurisée des essais gratuits -->
+<style>
+#lbl56TrialPanel{display:none;max-width:720px;margin:18px auto 130px;padding:18px;background:#fff;border:2px solid #087f72;border-radius:18px;box-shadow:0 4px 20px #102b4012;font-family:system-ui,sans-serif}
+#lbl56TrialPanel h2{font-size:19px;margin:0 0 8px;color:#102b40}
+#lbl56TrialPanel p{font-size:13px;color:#526879;line-height:1.5}
+#lbl56TrialPanel label{display:block;margin:12px 0 6px;font-size:14px;font-weight:700}
+#lbl56TrialPanel input[type=number]{width:120px}
+#lbl56TrialPanel .lbl56-check{display:flex;align-items:center;gap:8px;font-weight:600}
+#lbl56TrialPanel button{background:#087f72;color:white;border:0;font-weight:750}
+#lbl56TrialPanel output{display:block;font-size:13px;margin-top:12px;white-space:pre-wrap}
+</style>
+<section id="lbl56TrialPanel" aria-label="Configuration Super Administrateur des essais">
+<h2>⚙️ LBL Coach · Super Administrateur</h2>
+<p>Durée d'essai appliquée aux nouveaux clubs. Les essais déjà commencés ne sont pas modifiés.</p>
+<label for="lbl56TrialDays">Durée d'essai (jours)</label>
+<input id="lbl56TrialDays" type="number" min="1" max="365" step="1" value="7">
+<label class="lbl56-check"><input id="lbl56TrialEnabled" type="checkbox" checked> Autoriser les nouvelles inscriptions avec essai gratuit</label>
+<button id="lbl56TrialSave" type="button">Enregistrer la configuration</button>
+<output id="lbl56TrialStatus" aria-live="polite"></output>
+</section>
+<script id="lbl56-trial-admin-script">
+(()=>{'use strict';
+const url='https://fryzaokwciphbbtkibtq.supabase.co';
+const key='sb_publishable_RTk2yWkdjbVAvPz3z9rnWg_-RWvBU8G';
+const panel=document.getElementById('lbl56TrialPanel');
+const status=document.getElementById('lbl56TrialStatus');
+const days=document.getElementById('lbl56TrialDays');
+const enabled=document.getElementById('lbl56TrialEnabled');
+const save=document.getElementById('lbl56TrialSave');
+let client=null, currentUser=null;
+const say=(msg,bad=false)=>{status.textContent=msg;status.style.color=bad?'#b42318':'#087f72'};
+async function check(){
+ if(!window.supabase?.createClient)return;
+ client ||= window.supabase.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false},global:{headers:{'X-Client-Info':'lbl56-trial-admin'}}});
+ const {data:{user},error}=await client.auth.getUser();
+ if(error||!user){panel.style.display='none';currentUser=null;return;}
+ if(currentUser===user.id&&panel.style.display==='block')return;
+ const {data,error:rpcError}=await client.rpc('lbl56_get_trial_settings');
+ if(rpcError||!Array.isArray(data)||!data.length){panel.style.display='none';return;}
+ currentUser=user.id;days.value=data[0].trial_days;enabled.checked=data[0].trial_enabled;
+ panel.style.display='block';say('Paramètres chargés depuis Supabase DEV.');
+}
+save.addEventListener('click',async()=>{
+ const n=Number(days.value);
+ if(!Number.isInteger(n)||n<1||n>365){say('Choisis une durée entre 1 et 365 jours.',true);return;}
+ save.disabled=true;say('Enregistrement sécurisé en cours…');
+ try{const {data,error}=await client.rpc('lbl56_set_trial_settings',{p_trial_days:n,p_trial_enabled:enabled.checked});
+ if(error)throw error;
+ say('✓ Configuration enregistrée côté serveur : '+data[0].trial_days+' jours.');
+ }catch(e){say('Échec : '+e.message,true)}finally{save.disabled=false}
+});
+window.addEventListener('focus',()=>void check());
+setInterval(()=>{if(document.visibilityState==='visible')void check()},10000);
+setTimeout(()=>void check(),1200);
+})();
+</script>
+</body></html>
