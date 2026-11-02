@@ -460,7 +460,33 @@ body.lbl33-viewer .lbl5716-change small{font-size:11px;color:#587084}
 </style><style id="lbl5720-production-look">
 .mobile-beta,.v2-notice,#lbl43Panel,#lbl55AuditPanel,#lbl551Panel,#lbl552Panel,#lbl553Panel,#lbl555Panel,#lbl576Panel{display:none!important}
 header h1{letter-spacing:.035em}header small{font-size:12px}
-</style></head><body><div style="position:sticky;top:0;z-index:99999;background:#a33;color:white;text-align:center;font-weight:900;padding:9px">LBL COACH — DÉVELOPPEMENT v56.0.0 · BASE SUPABASE DEV OBLIGATOIRE</div><section id="lbl26Auth" aria-label="Connexion LBL Coach"><div class="lbl26-panel"><h1>🏆 LBL Coach</h1><p>Connecte-toi à ton espace entraîneur.</p><div id="lbl26Setup"><strong>Configuration Supabase</strong><p class="lbl26-small">À renseigner une seule fois sur cet appareil. Utilise l’URL du projet et la clé publique (publishable / anon), jamais une clé secrète.</p><label for="lbl26Url">URL du projet</label><input id="lbl26Url" type="url" placeholder="https://xxxx.supabase.co" autocomplete="url"><label for="lbl26Key">Clé publique Supabase</label><input id="lbl26Key" type="text" placeholder="sb_publishable_… ou clé anon" autocomplete="off"><div class="lbl26-actions"><button id="lbl26SaveConfig">Enregistrer la configuration</button></div></div><form id="lbl26Login" class="lbl26-hidden"><label for="lbl26Email">Adresse e-mail</label><input id="lbl26Email" type="email" required autocomplete="email" placeholder="coach@club.fr"><label for="lbl26Password">Mot de passe</label><input id="lbl26Password" type="password" required minlength="6" autocomplete="current-password" placeholder="Ton mot de passe"><label style="display:flex;align-items:center;gap:8px;margin:10px 0;font-size:13px"><input id="lbl571RememberEmail" type="checkbox" checked style="width:18px;height:18px;flex:none">Mémoriser mon adresse e-mail sur cet appareil</label><p class="lbl26-small" id="lbl571SessionHint">La session Supabase est réutilisée automatiquement lorsqu’elle est disponible dans ce navigateur. Le mot de passe n’est jamais enregistré par LBL Coach.</p><div class="lbl26-actions"><button type="submit" id="lbl26SignIn">Se connecter</button><button type="button" id="lbl26SignUp" class="lbl26-secondary">Créer un compte</button></div><div class="lbl26-actions"><button type="button" id="lbl26Reset" class="lbl26-secondary">Mot de passe oublié</button><button type="button" id="lbl26ChangeConfig" class="lbl26-secondary">Configuration</button></div></form><section id="lbl56Onboard" hidden aria-label="Bienvenue sur LBL Coach" style="background:#eef8f5;border:1px solid #a6d9cc;border-radius:15px;padding:16px;margin:16px 0">
+</style><style id="lbl5602-isolation">
+/* DEV v56.0.2: quarantine legacy Labarthe data for all non-pilot clubs. */
+#lbl5602Workspace{display:none}
+body.lbl5602-client #lbl5602Workspace{display:block}
+body.lbl5602-client header,body.lbl5602-client #mobileHome,body.lbl5602-client #mobileBottomNav,
+body.lbl5602-client .appnav,body.lbl5602-client #seasonPage,body.lbl5602-client #rankingPage,
+body.lbl5602-client #statsPage,body.lbl5602-client #coachPage,body.lbl5602-client #lbl28Sync,
+body.lbl5602-client #lbl27ClubStatus,body.lbl5602-client #lbl26Account,
+body.lbl5602-client #lbl5563Notice,body.lbl5602-client #lbl34Viewer,
+body.lbl5602-client #lbl33Panel,body.lbl5602-client #lbl36Panel,
+body.lbl5602-client #lbl35Panel,body.lbl5602-client #lbl34Panel,
+body.lbl5602-client #lbl32Panel,body.lbl5602-client #lbl40Panel,
+body.lbl5602-client #lbl56SuperAdmin,body.lbl5602-client #lbl56SuperAdminPanel{display:none!important}
+body:not(.lbl26-unlocked) #lbl5602Workspace{display:none!important}
+body.lbl5602-client{background:#f2f6f8}
+#lbl5602Workspace{max-width:760px;margin:35px auto;padding:0 18px 55px}
+.lbl5602-card{background:#fff;border:1px solid #d8e6e7;border-radius:20px;padding:28px;box-shadow:0 8px 30px #14364a0a}
+.lbl5602-card h1{font-size:28px;color:#103447;margin:8px 0 12px}
+.lbl5602-card p{line-height:1.55;color:#506477}
+.lbl5602-pill{display:inline-block;background:#dff6ed;color:#066956;border-radius:20px;padding:7px 12px;font-size:12px;font-weight:750}
+.lbl5602-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.lbl5602-actions button{background:#087f70;color:white;border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
+.lbl5602-actions button.secondary{background:#e8f1f0;color:#075a52}
+body.lbl5602-onboarding #lbl26Login,body.lbl5602-onboarding #lbl579Request{display:none!important}
+body.lbl5602-onboarding #lbl26Auth{min-height:100vh}
+body.lbl5602-onboarding #lbl56Onboard{display:block!important}
+</style></head><body><div style="position:sticky;top:0;z-index:99999;background:#a33;color:white;text-align:center;font-weight:900;padding:9px">LBL COACH — DÉVELOPPEMENT v56.0.2 · BASE SUPABASE DEV OBLIGATOIRE</div><section id="lbl26Auth" aria-label="Connexion LBL Coach"><div class="lbl26-panel"><h1>🏆 LBL Coach</h1><p>Connecte-toi à ton espace entraîneur.</p><div id="lbl26Setup"><strong>Configuration Supabase</strong><p class="lbl26-small">À renseigner une seule fois sur cet appareil. Utilise l’URL du projet et la clé publique (publishable / anon), jamais une clé secrète.</p><label for="lbl26Url">URL du projet</label><input id="lbl26Url" type="url" placeholder="https://xxxx.supabase.co" autocomplete="url"><label for="lbl26Key">Clé publique Supabase</label><input id="lbl26Key" type="text" placeholder="sb_publishable_… ou clé anon" autocomplete="off"><div class="lbl26-actions"><button id="lbl26SaveConfig">Enregistrer la configuration</button></div></div><form id="lbl26Login" class="lbl26-hidden"><label for="lbl26Email">Adresse e-mail</label><input id="lbl26Email" type="email" required autocomplete="email" placeholder="coach@club.fr"><label for="lbl26Password">Mot de passe</label><input id="lbl26Password" type="password" required minlength="6" autocomplete="current-password" placeholder="Ton mot de passe"><label style="display:flex;align-items:center;gap:8px;margin:10px 0;font-size:13px"><input id="lbl571RememberEmail" type="checkbox" checked style="width:18px;height:18px;flex:none">Mémoriser mon adresse e-mail sur cet appareil</label><p class="lbl26-small" id="lbl571SessionHint">La session Supabase est réutilisée automatiquement lorsqu’elle est disponible dans ce navigateur. Le mot de passe n’est jamais enregistré par LBL Coach.</p><div class="lbl26-actions"><button type="submit" id="lbl26SignIn">Se connecter</button><button type="button" id="lbl26SignUp" class="lbl26-secondary">Créer un compte</button></div><div class="lbl26-actions"><button type="button" id="lbl26Reset" class="lbl26-secondary">Mot de passe oublié</button><button type="button" id="lbl26ChangeConfig" class="lbl26-secondary">Configuration</button></div></form><section id="lbl56Onboard" hidden aria-label="Bienvenue sur LBL Coach" style="background:#eef8f5;border:1px solid #a6d9cc;border-radius:15px;padding:16px;margin:16px 0">
 <h2 style="font-size:19px;margin:0 0 8px;color:#075e55">Bienvenue sur LBL Coach</h2>
 <p id="lbl56OnboardEmail" style="font-size:12px;color:#526879"></p>
 <p style="font-size:13px">Ton compte est confirmé. Pour commencer, crée ton club et profite de la période d'essai gratuite.</p>
@@ -470,7 +496,15 @@ header h1{letter-spacing:.035em}header small{font-size:12px}
 <p id="lbl56CreateClubStatus" role="status" style="font-size:12px;white-space:pre-wrap"></p>
 <details style="margin-top:12px"><summary style="font-weight:700;cursor:pointer">Rejoindre un club existant</summary><p style="font-size:12px">Pour l'instant, demande à l'administrateur de ton club de t'inviter ou de t'ajouter. La procédure d'invitation autonome sera développée séparément.</p></details>
 <button id="lbl56OnboardLogout" type="button" class="lbl26-secondary" style="margin-top:14px;width:100%">Se déconnecter</button>
-</section><p id="lbl26Msg" role="status" aria-live="polite"></p><p class="lbl26-small">Authentification et identification du club via Supabase. Attention : joueurs, compositions et statistiques restent locaux sur cet appareil, non synchronisés et non isolés entre comptes sur ce navigateur.</p></div></section><div id="lbl27ClubStatus" role="status" aria-live="polite">Chargement du club…</div><section id="lbl28Sync" aria-label="Synchronisation des joueurs"><div class="lbl28-card"><h3>☁️ Effectif partagé</h3><p>Gérez ici les joueurs partagés entre entraîneurs. Les modifications cloud ne remplacent pas encore les compositions locales. Les photos restent locales.</p><div class="lbl28-buttons"><button id="lbl28Upload" type="button">Envoyer mes joueurs vers Supabase</button><button id="lbl28Refresh" class="secondary" type="button">Voir les joueurs du cloud</button></div><div id="lbl29Editor" style="margin-top:13px;border-top:1px solid #d9e9e4;padding-top:13px"><strong style="font-size:13px;color:#0b665c">Gestion collaborative</strong><p>Ajoutez ou modifiez un joueur dans le cloud. Actualisez la liste pour voir les changements des autres entraîneurs.</p><div class="lbl29-fields"><input id="lbl29Name" maxlength="120" placeholder="Nom du joueur" aria-label="Nom du joueur"><select id="lbl29Role" aria-label="Poste"><option value="P">Pointeur</option><option value="M">Milieu</option><option value="T">Tireur</option></select></div><div class="lbl28-buttons"><button id="lbl29Save" type="button">Ajouter au cloud</button><button id="lbl29Cancel" class="secondary" type="button" style="display:none">Annuler la modification</button></div><p id="lbl29Hint">Choisissez « Modifier » dans la liste pour changer un joueur.</p></div><p id="lbl28Status" class="lbl28-status" role="status" aria-live="polite">Connexion au club en cours…</p><details><summary>Voir et modifier l'effectif Supabase</summary><ul id="lbl28List" class="lbl29-list"></ul></details></div></section><button id="lbl26Account" type="button" title="Gérer mon compte">Mon compte</button><header><div style="max-width:1050px;margin:auto"><h1>LBL COACH <span class="mobile-beta">v56.0.0 DEV</span></h1><small>La Boule Labarthaise · v56.0.0 DEV</small></div></header><section id="mobileHome" class="mobile-home v2-home">
+</section><p id="lbl26Msg" role="status" aria-live="polite"></p><p class="lbl26-small">Authentification et identification du club via Supabase. Attention : joueurs, compositions et statistiques restent locaux sur cet appareil, non synchronisés et non isolés entre comptes sur ce navigateur.</p></div></section><section id="lbl5602Workspace" aria-label="Espace de mon club"><div class="lbl5602-card">
+<span class="lbl5602-pill">✓ Club créé · Espace indépendant</span>
+<h1 id="lbl5602ClubName">Mon club</h1>
+<p>Bienvenue dans ton nouvel espace LBL Coach. Ton club et ton compte administrateur sont enregistrés dans Supabase DEV.</p>
+<p><strong>Ton espace sportif est encore en préparation.</strong> Pour éviter de mélanger les données entre clubs, les anciens écrans de Labarthe (championnat CDC, classement, joueurs et outils historiques) sont temporairement désactivés ici.</p>
+<p>Prochaine étape : connecter les joueurs, compétitions, rencontres et statistiques au club sélectionné, avec vérification des droits côté serveur.</p>
+<div class="lbl5602-actions"><button type="button" id="lbl5602Refresh">Actualiser mon espace</button><button type="button" class="secondary" id="lbl5602Logout">Se déconnecter</button></div>
+<p id="lbl5602Status" role="status" style="font-size:12px"></p>
+</div></section><div id="lbl27ClubStatus" role="status" aria-live="polite">Chargement du club…</div><section id="lbl28Sync" aria-label="Synchronisation des joueurs"><div class="lbl28-card"><h3>☁️ Effectif partagé</h3><p>Gérez ici les joueurs partagés entre entraîneurs. Les modifications cloud ne remplacent pas encore les compositions locales. Les photos restent locales.</p><div class="lbl28-buttons"><button id="lbl28Upload" type="button">Envoyer mes joueurs vers Supabase</button><button id="lbl28Refresh" class="secondary" type="button">Voir les joueurs du cloud</button></div><div id="lbl29Editor" style="margin-top:13px;border-top:1px solid #d9e9e4;padding-top:13px"><strong style="font-size:13px;color:#0b665c">Gestion collaborative</strong><p>Ajoutez ou modifiez un joueur dans le cloud. Actualisez la liste pour voir les changements des autres entraîneurs.</p><div class="lbl29-fields"><input id="lbl29Name" maxlength="120" placeholder="Nom du joueur" aria-label="Nom du joueur"><select id="lbl29Role" aria-label="Poste"><option value="P">Pointeur</option><option value="M">Milieu</option><option value="T">Tireur</option></select></div><div class="lbl28-buttons"><button id="lbl29Save" type="button">Ajouter au cloud</button><button id="lbl29Cancel" class="secondary" type="button" style="display:none">Annuler la modification</button></div><p id="lbl29Hint">Choisissez « Modifier » dans la liste pour changer un joueur.</p></div><p id="lbl28Status" class="lbl28-status" role="status" aria-live="polite">Connexion au club en cours…</p><details><summary>Voir et modifier l'effectif Supabase</summary><ul id="lbl28List" class="lbl29-list"></ul></details></div></section><button id="lbl26Account" type="button" title="Gérer mon compte">Mon compte</button><header><div style="max-width:1050px;margin:auto"><h1>LBL COACH <span class="mobile-beta">v56.0.2 DEV</span></h1><small>La Boule Labarthaise · v56.0.2 DEV</small></div></header><section id="mobileHome" class="mobile-home v2-home">
  <div class="v2-hero"><div class="v2-eyebrow"><span class="v2-live-dot"></span> ESPACE COACH · VERSION PILOTE</div><h2>Prêt pour la<br><em>prochaine rencontre ?</em></h2><p>Composez votre équipe, suivez vos matchs et mesurez les progrès de vos joueurs.</p><div class="v2-club"><span class="v2-club-icon">LB</span><div><strong>La Boule Labarthaise</strong><small>Club pilote · CDC3 2026</small></div><span class="v2-chevron">›</span></div></div>
  <div class="v2-content"><div class="v2-section-label"><h3>Vue d'ensemble</h3><span>Données de votre appareil</span></div><div class="v2-kpis"><div class="v2-kpi"><span>JOUEURS</span><strong id="v2Players">—</strong><small>dans l'effectif</small></div><div class="v2-kpi"><span>RENCONTRES</span><strong id="v2Matches">—</strong><small>avec résultat</small></div><div class="v2-kpi"><span>VICTOIRES</span><strong id="v2Wins">—</strong><small>en championnat</small></div></div>
  <div class="v2-section-label"><h3>Votre championnat</h3><span>Saison 2026</span></div><div class="v2-fixture"><div class="v2-fixture-top"><span class="v2-pill">PROCHAINE RENCONTRE</span><span id="v2FixtureDate">—</span></div><strong id="v2FixtureTeams">Chargement du calendrier…</strong><small id="v2FixtureRound">Calendrier CDC3</small><button type="button" class="v2-fixture-btn" data-go="season">Voir les rencontres <span>→</span></button></div>
@@ -1463,11 +1497,11 @@ const n=document.createElement('div');n.id='lbl5563Notice';n.textContent='☁️
 const $=id=>document.getElementById(id), C='lbl56-dev-supabase-config';let client=null, busy=false, clubRequest=0, activeClub=null, activeUser=null;
 const message=(s,good=false)=>{$('lbl26Msg').textContent=s;$('lbl26Msg').style.color=good?'#087b6d':'#a43230'};
 function showSetup(){document.body.classList.remove('lbl26-unlocked');$('lbl26Setup').classList.remove('lbl26-hidden');$('lbl26Login').classList.add('lbl26-hidden')}
-function showLogin(){$('lbl56Onboard').hidden=true;document.body.classList.remove('lbl26-unlocked');$('lbl26Setup').classList.add('lbl26-hidden');$('lbl26Login').classList.remove('lbl26-hidden')}
+function showLogin(){document.body.classList.remove('lbl5602-client','lbl5602-onboarding');$('lbl56Onboard').hidden=true;document.body.classList.remove('lbl26-unlocked');$('lbl26Setup').classList.add('lbl26-hidden');$('lbl26Login').classList.remove('lbl26-hidden')}
 function setClubStatus(text,error=false){const el=$('lbl27ClubStatus');el.textContent=text;el.classList.toggle('error',error)}
 async function unlocked(user){
  const request=++clubRequest;
- if(!user){window.dispatchEvent(new Event('lbl:club-signed-out'));document.body.classList.remove('lbl33-viewer','lbl33-editor');activeClub=null;activeUser=null;cloudRows=[];resetCloudEditor();showLogin();setClubStatus('');return}
+ if(!user){document.body.classList.remove('lbl5602-client','lbl5602-onboarding');window.dispatchEvent(new Event('lbl:club-signed-out'));document.body.classList.remove('lbl33-viewer','lbl33-editor');activeClub=null;activeUser=null;cloudRows=[];resetCloudEditor();showLogin();setClubStatus('');return}
  // Ne pas afficher l'application avant de confirmer l'appartenance à un club.
  document.body.classList.remove('lbl26-unlocked');
  $('lbl26Setup').classList.add('lbl26-hidden');$('lbl26Login').classList.remove('lbl26-hidden');
@@ -1478,12 +1512,14 @@ async function unlocked(user){
   if(error)throw error;
   const member=(members||[]).find(m=>m.clubs?.name==='La Boule Labarthaise')||(members||[])[0];
   if(!member?.clubs){
+    document.body.classList.remove('lbl5602-client');document.body.classList.add('lbl5602-onboarding');
     activeClub=null; activeUser=user.id;
     document.getElementById('lbl56Onboard').hidden=false;
     document.getElementById('lbl56OnboardEmail').textContent=user.email||'Compte connecté';
     message('Compte confirmé. Tu peux maintenant créer ton club ou demander à rejoindre un club.',true);
     return;
   }
+  document.body.classList.remove('lbl5602-onboarding');
   document.getElementById('lbl56Onboard').hidden=true;
   activeClub={id:member.club_id,name:member.clubs.name,role:member.role};activeUser=user.id;resetCloudEditor();
   const roleLabel={admin:'Administrateur',coach:'Coach',viewer:'Lecteur'}[member.role]||member.role;
@@ -1491,12 +1527,24 @@ async function unlocked(user){
   $('lbl26Account').textContent='👤 '+(user.email||'Mon compte');
   setClubStatus('🏆 '+clubName+' · '+roleLabel+' · Données sportives locales');
   document.querySelectorAll('.v2-club strong').forEach(el=>el.textContent=clubName);
+  // Non-pilot clubs must NEVER render the legacy Labarthe sports workspace.
+  // This is an intentional feature quarantine, not yet complete multitenant storage.
+  const isPilotClub=clubName==='La Boule Labarthaise';
+  document.body.classList.toggle('lbl5602-client',!isPilotClub);
+  if(!isPilotClub){
+    $('lbl5602ClubName').textContent=clubName;
+    document.querySelector('header small').textContent=clubName+' · DEV';
+  }
   document.body.classList.add('lbl26-unlocked');
   document.body.classList.toggle('lbl33-viewer',member.role==='viewer');
   document.body.classList.toggle('lbl33-editor',member.role==='admin'||member.role==='coach');
   document.querySelectorAll('[data-page],[data-go]').forEach(b=>b.style.removeProperty('display'));
   $('lbl34Viewer').hidden=member.role!=='viewer';if(member.role==='viewer'){document.querySelector('[data-go=home]')?.click();void viewer34();}
   message('',true);
+  if(!isPilotClub){
+    // Do not fire the legacy cloud/data loaders for customer clubs.
+    return;
+  }
   window.dispatchEvent(new CustomEvent('lbl:club-ready',{detail:{clubId:activeClub.id,userId:activeUser,role:member.role}}));
   void refreshCloud();
  }catch(e){if(request!==clubRequest)return;message('Impossible de vérifier ton club : '+(e.message||e)+'. Vérifie ta connexion et réessaie de te connecter.');}
@@ -1516,6 +1564,16 @@ $('lbl56CreateClubBtn').addEventListener('click',async()=>{
     await unlocked(session.user);
   }catch(e){status.textContent='Création impossible : '+(e.message||e)}
   finally{button.disabled=false}
+});
+$('lbl5602Refresh').addEventListener('click',async()=>{
+ const {data,error}=await client.auth.getUser();
+ if(error||!data?.user){$('lbl5602Status').textContent='Session expirée : reconnecte-toi.';return}
+ await unlocked(data.user);
+});
+$('lbl5602Logout').addEventListener('click',async()=>{
+ const {error}=await client.auth.signOut();
+ if(error){$('lbl5602Status').textContent=error.message;return}
+ await unlocked(null);
 });
 $('lbl56OnboardLogout').addEventListener('click',async()=>{
   const {error}=await client.auth.signOut();
